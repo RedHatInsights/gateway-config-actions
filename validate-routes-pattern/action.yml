@@ -1,0 +1,9 @@
+name: Custom Validation
+description: Additional validation not covered in the schema validation
+inputs:
+  routes_file_pattern:
+    description: Where the routes live
+    required: true
+runs:
+  using: node12
+  main: index.js
