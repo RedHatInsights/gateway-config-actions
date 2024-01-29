@@ -1,0 +1,15 @@
+name: Gateway Post-commit Action
+description: Converts Gateway config JSON to configmaps
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.branch_name }}
+inputs:
+  token:
+    description: GitHub token
+    required: true
+  branch_name:
+    description: Git branch
+    required: false
