@@ -36,7 +36,7 @@ do
   mkdir -p $CONFIGMAPS_TARGET/${ENV}
 
   ROUTES_CONFIG=${ROUTES_DIR}/${ENV}/routes.json
-  ROUTES_CONFIGMAP_FILE=${CONFIGMAPS_TARGET}/${ENV}/routes.configmap.json
+  ROUTES_CONFIGMAP_FILE=${CONFIGMAPS_TARGET}/${ENV}/routes.configmap.yml
 
   # create templates
   echo -n 'kind: Template
@@ -45,7 +45,7 @@ objects:
 - ' > $ROUTES_CONFIGMAP_FILE
 
   # create configmaps
-  kubectl create configmap backend-routes --from-file $ROUTES_CONFIG --dry-run=client --validate=false -o json | indent >> $ROUTES_CONFIGMAP_FILE
+  kubectl create configmap backend-routes --from-file $ROUTES_CONFIG --dry-run=client --validate=false -o yaml | indent >> $ROUTES_CONFIGMAP_FILE
 
   # add annotations
   echo '    annotations:
